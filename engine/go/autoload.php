@@ -1,0 +1,17 @@
+<?php
+
+use engine\core\Router;
+
+spl_autoload_register(function ($class) {
+    $path = str_replace('\\', '/', $class . '.php');
+//    echo $path . '<br>';
+    if (file_exists($path)) {
+        require($path);
+    }
+});
+
+session_start();
+
+$router = new Router();
+$router->run();
+
